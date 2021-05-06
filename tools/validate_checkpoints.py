@@ -32,20 +32,19 @@ try:
 except ImportError:
     raise ImportError('Use APEX for multi-precision via apex.amp')
 
-torch.multiprocessing.set_sharing_strategy('file_system')
 
-def train(cfg, local_rank, distributed):
+def val(cfg, local_rank, distributed):
     model = build_detection_model(cfg)
     device = torch.device(cfg.MODEL.DEVICE)
     model.to(device)
 
-    optimizer = make_optimizer(cfg, model)
-    scheduler = make_lr_scheduler(cfg, optimizer)
+    # optimizer = make_optimizer(cfg, model)
+    # scheduler = make_lr_scheduler(cfg, optimizer)
 
     # Initialize mixed-precision training
-    use_mixed_precision = cfg.DTYPE == "float16"
-    amp_opt_level = 'O1' if use_mixed_precision else 'O0'
-    model, optimizer = amp.initialize(model, optimizer, opt_level=amp_opt_level)
+    # use_mixed_precision = cfg.DTYPE == "float16"
+    # amp_opt_level = 'O1' if use_mixed_precision else 'O0'
+    # model, optimizer = amp.initialize(model, optimizer, opt_level=amp_opt_level)
 
     if distributed:
         model = torch.nn.parallel.DistributedDataParallel(
@@ -75,16 +74,22 @@ def train(cfg, local_rank, distributed):
 
     checkpoint_period = cfg.SOLVER.CHECKPOINT_PERIOD
 
-    do_train(
-        model,
-        data_loader,
-        optimizer,
-        scheduler,
-        checkpointer,
-        device,
-        checkpoint_period,
-        arguments,
-    )
+    for iteration, (images, targets, _) in enumerate(data_loader, start_iter):
+     
+        iteration = iteration + 1
+        arguments["iteration"] = iteration
+
+        images = images.to(device)
+        targets = [target.to(device) for target in targets]
+
+        loss_dict = model(images, targets)
+
+        losses = sum(loss for loss in loss_dict.values())
+
+        # reduce losses over all GPUs for logging purposes
+        loss_dict_reduced = reduce_loss_dict(loss_dict)
+        losses_reduced = sum(loss for loss in loss_dict_reduced.values())
+        meters.update(loss=losses_reduced, **loss_dict_reduced)
 
     return model
 

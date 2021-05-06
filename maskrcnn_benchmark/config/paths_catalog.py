@@ -7,6 +7,181 @@ import os
 class DatasetCatalog(object):
     DATA_DIR = "datasets"
     DATASETS = {
+        "hsrc_srn_COCO_fgbg_train": {
+        "img_dir": "hsrc_srn/JPEGImages/COCO_fgbg_train", "ann_file": "hsrc_srn/Annotations/cl_instances_COCO_fgbg_train.json"
+        },
+
+        "hsrc_srn_lab_bg_val": {
+        "img_dir": "hsrc_srn/JPEGImages/lab_bg_val", "ann_file": "hsrc_srn/Annotations/cl_instances_lab_bg_val.json"
+        },
+
+        "hsrc_srn_COCO_bg_val": {
+        "img_dir": "hsrc_srn/JPEGImages/COCO_bg_val", "ann_file": "hsrc_srn/Annotations/cl_instances_COCO_bg_val.json"
+        },
+
+        "hsrc_srn_orig_val": {
+        "img_dir": "hsrc_srn/JPEGImages/orig_val", "ann_file": "hsrc_srn/Annotations/cl_instances_orig_val.json"
+        },
+
+        "hsrc_srn_lab_bg_train": {
+        "img_dir": "hsrc_srn/JPEGImages/lab_bg_train", "ann_file": "hsrc_srn/Annotations/cl_instances_lab_bg_train.json"
+        },
+
+        "hsrc_srn_lab_fgbg_val": {
+        "img_dir": "hsrc_srn/JPEGImages/lab_fgbg_val", "ann_file": "hsrc_srn/Annotations/cl_instances_lab_fgbg_val.json"
+        },
+
+        "hsrc_srn_lab_fgbg_train": {
+        "img_dir": "hsrc_srn/JPEGImages/lab_fgbg_train", "ann_file": "hsrc_srn/Annotations/cl_instances_lab_fgbg_train.json"
+        },
+
+        "hsrc_srn_COCO_bg_train": {
+        "img_dir": "hsrc_srn/JPEGImages/COCO_bg_train", "ann_file": "hsrc_srn/Annotations/cl_instances_COCO_bg_train.json"
+        },
+
+        "hsrc_srn_orig_train": {
+        "img_dir": "hsrc_srn/JPEGImages/orig_train", "ann_file": "hsrc_srn/Annotations/cl_instances_orig_train.json"
+        },
+
+        "hsrc_srn_fg_val": {
+        "img_dir": "hsrc_srn/JPEGImages/fg_val", "ann_file": "hsrc_srn/Annotations/cl_instances_fg_val.json"
+        },
+
+        "hsrc_srn_COCO_fgbg_val": {
+        "img_dir": "hsrc_srn/JPEGImages/COCO_fgbg_val", "ann_file": "hsrc_srn/Annotations/cl_instances_COCO_fgbg_val.json"
+        },
+
+        "hsrc_srn_fg_train": {
+        "img_dir": "hsrc_srn/JPEGImages/fg_train", "ann_file": "hsrc_srn/Annotations/cl_instances_fg_train.json"
+        },
+        "srn_objects_orig_train": {
+            "img_dir": "YCB/JPEGImages/all_orig_train",
+            "ann_file": "YCB/Annotations/all_orig_train_instances.json"
+        },
+        "srn_objects_orig_val": {
+            "img_dir": "YCB/JPEGImages/all_orig_val",
+            "ann_file": "YCB/Annotations/all_orig_val_instances.json"
+        },
+        "srn_orig_train": {
+            "img_dir": "SRN/JPEGImages/orig-train",
+            "ann_file": "SRN/Annotations/orig_gripper_train_instances.json"
+        },
+        "srn_orig_val": {
+            "img_dir": "SRN/JPEGImages/orig-val",
+            "ann_file": "SRN/Annotations/orig_gripper_val_instances.json"
+        },
+        "lvis_train": {
+            "img_dir": "LVIS/JPEGImages/train",
+            "ann_file": "LVIS/Annotations/lvis_v0.5_cocostyle_train.json"
+        },
+        "lvis_val": {
+            "img_dir": "LVIS/JPEGImages/val",
+            "ann_file": "LVIS/Annotations/lvis_v0.5_cocostyle_val.json"
+        },
+        "hsr_IROS_obj": {
+            "img_dir": "YCB/JPEGImages/IROS",
+            "ann_file": "YCB/Annotations/IROS_instances.json"
+        },
+        "hsr_ICRA_obj": {
+            "img_dir": "YCB/JPEGImages/ICRA",
+            "ann_file": "YCB/Annotations/ICRA_instances.json"
+        },
+        "hsr_IROS_obj_multi": {
+            "img_dir": "YCB/JPEGImages/IROS_multi",
+            "ann_file": "YCB/Annotations/IROS_multi_instances.json"
+        },
+        "hsr_ICRA_obj_multi": {
+            "img_dir": "YCB/JPEGImages/ICRA_multi",
+            "ann_file": "YCB/Annotations/ICRA_multi_instances.json"
+        },
+        "hsr_IROS_obj_orig": {
+            "img_dir": "YCB/JPEGImages/IROS_orig",
+            "ann_file": "YCB/Annotations/IROS_objects_orig_instances.json"
+        },
+        "hsr_ICRA_obj_orig": {
+            "img_dir": "YCB/JPEGImages/ICRA_orig",
+            "ann_file": "YCB/Annotations/ICRA_objects_orig_instances.json"
+        },
+        "hsr_IROS_test": {
+            "img_dir": "YCB/JPEGImages/IROS_test",
+            "ann_file": "YCB/Annotations/IROS_test_instances.json"
+        },
+        "hsr_ICRA_test": {
+            "img_dir": "YCB/JPEGImages/ICRA_test",
+            "ann_file": "YCB/Annotations/ICRA_test_instances.json"
+        },
+        "hsr_challenge5": {
+            "img_dir": "challenge5/JPEGImages",
+            "ann_file": "challenge5/instances_challenge5.json"
+        },
+        "hsr_challenge_objects": {
+            "img_dir": "challenge_objects/JPEGImages",
+            "ann_file": "challenge_objects/instances_challenge_objects.json"
+        },
+        "hsr_obj_gt_train": {
+            "img_dir": "hsr/in_hand/JPEGImages",
+            "ann_file": "hsr/in_hand/Annotations/instances_in_hand_object_ground_truth.json"
+        },
+        "hsr_obj_self_supervised_train": {
+            "img_dir": "hsr/in_hand/JPEGImages",
+            "ann_file": "hsr/in_hand/Annotations/instances_in_hand_object_self_supervised.json"
+        },
+        "hsr_obj_test": {
+            "img_dir": "hsr/test/JPEGImages",
+            "ann_file": "hsr/test/Annotations/instances_test_object.json"
+        },
+        "hsr_gripper_train_ICRA":{
+            "img_dir": "hsr/gripper_ICRA/train/JPEGImages",
+            "ann_file": "hsr/gripper_ICRA/train/instances_gripper.json"
+        },
+        "hsr_gripper_val_ICRA":{
+            "img_dir": "hsr/gripper_ICRA/val/JPEGImages",
+            "ann_file": "hsr/gripper_ICRA/val/instances_gripper.json"
+        },
+        "hsr_gripper_train": {
+            "img_dir": "hsr/gripper/train/JPEGImages",
+            "ann_file": "hsr/gripper/train/instances_gripper.json"
+        },
+        "hsr_gripper_val": {
+            "img_dir": "hsr/gripper/val/JPEGImages",
+            "ann_file": "hsr/gripper/val/instances_gripper.json"
+        },
+        "hsr_gripper_test": {
+            "img_dir": "hsr/gripper/test/JPEGImages",
+            "ann_file": "hsr/gripper/test/instances_gripper.json"
+        },
+        "hsr_gripper_bg_train":{
+            "img_dir": "hsr/gripper_bg/train/JPEGImages",
+            "ann_file": "hsr/gripper_bg/train/instances_gripper_bg.json"
+        },
+        "hsr_gripper_bg_val":{
+            "img_dir": "hsr/gripper_bg/val/JPEGImages",
+            "ann_file": "hsr/gripper_bg/val/instances_gripper_bg.json"
+        },
+        "hsr_gripper_bg_test":{
+            "img_dir": "hsr/gripper_bg/test/JPEGImages",
+            "ann_file": "hsr/gripper_bg/test/instances_gripper_bg.json"
+        },
+        "hsr_gripper_fg_bg_train":{
+            "img_dir": "hsr/gripper_fg_bg/train/JPEGImages",
+            "ann_file": "hsr/gripper_fg_bg/train/instances_gripper_fg_bg.json"
+        },
+        "hsr_gripper_fg_bg_val":{
+            "img_dir": "hsr/gripper_fg_bg/val/JPEGImages",
+            "ann_file": "hsr/gripper_fg_bg/val/instances_gripper_fg_bg.json"
+        },
+        "hsr_gripper_fg_bg_test":{
+            "img_dir": "hsr/gripper_fg_bg/test/JPEGImages",
+            "ann_file": "hsr/gripper_fg_bg/test/instances_gripper_fg_bg.json"
+        },       
+        "hsr_obj_aug_gt_train":{
+            "img_dir": "hsr/in_hand_aug/JPEGImages/ground-truth",
+            "ann_file": "hsr/in_hand_aug/Annotations/instances_in_hand_augmented_ground_truth.json"
+        },
+        "hsr_obj_aug_maskrcnn_train":{
+            "img_dir": "hsr/in_hand_aug/JPEGImages/maskrcnn",
+            "ann_file": "hsr/in_hand_aug/Annotations/instances_in_hand_augmented_maskrcnn.json"
+        },
         "coco_2017_train": {
             "img_dir": "coco/train2017",
             "ann_file": "coco/annotations/instances_train2017.json"
@@ -108,7 +283,7 @@ class DatasetCatalog(object):
 
     @staticmethod
     def get(name):
-        if "coco" in name:
+        if "coco" in name or "lvis" in name or "hsr" in name or "srn" in name:
             data_dir = DatasetCatalog.DATA_DIR
             attrs = DatasetCatalog.DATASETS[name]
             args = dict(

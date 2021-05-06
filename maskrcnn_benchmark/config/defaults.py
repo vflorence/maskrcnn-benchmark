@@ -221,7 +221,7 @@ _C.MODEL.ROI_BOX_HEAD.USE_GN = False
 _C.MODEL.ROI_BOX_HEAD.DILATION = 1
 _C.MODEL.ROI_BOX_HEAD.CONV_HEAD_DIM = 256
 _C.MODEL.ROI_BOX_HEAD.NUM_STACKED_CONVS = 4
-
+_C.MODEL.ROI_BOX_HEAD.FREEZE = False
 
 _C.MODEL.ROI_MASK_HEAD = CN()
 _C.MODEL.ROI_MASK_HEAD.FEATURE_EXTRACTOR = "ResNet50Conv5ROIFeatureExtractor"
@@ -240,6 +240,7 @@ _C.MODEL.ROI_MASK_HEAD.POSTPROCESS_MASKS_THRESHOLD = 0.5
 _C.MODEL.ROI_MASK_HEAD.DILATION = 1
 # GN
 _C.MODEL.ROI_MASK_HEAD.USE_GN = False
+_C.MODEL.ROI_MASK_HEAD.FREEZE = False
 
 _C.MODEL.ROI_KEYPOINT_HEAD = CN()
 _C.MODEL.ROI_KEYPOINT_HEAD.FEATURE_EXTRACTOR = "KeypointRCNNFeatureExtractor"
@@ -464,3 +465,10 @@ _C.DTYPE = "float32"
 
 # Enable verbosity in apex.amp
 _C.AMP_VERBOSE = False
+
+# ---------------------------------------------------------------------------- #
+# Panoptic FPN
+# ---------------------------------------------------------------------------- #
+_C.MODEL.PANOPTIC = CN()
+_C.MODEL.PANOPTIC.CHANNEL_SIZE = 128
+_C.MODEL.PANOPTIC.NUM_CLASSES = 1

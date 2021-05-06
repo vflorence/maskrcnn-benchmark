@@ -1,0 +1,1 @@
+LVIS, batch: 4, params: 0, d_max: 1.000, d_res: 0.001

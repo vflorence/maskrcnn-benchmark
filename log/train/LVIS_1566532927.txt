@@ -1,0 +1,4 @@
+LVIS, batch: 4, params: 0, d_max: 1.000, d_res: 0.001
+[     20] loss: 1.429715
+[     40] loss: 1.203828
+[     60] loss: 1.625007
